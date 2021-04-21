@@ -1,7 +1,7 @@
 import { UsersRepository } from "../repositories/UsersRepository";
 import { getCustomRepository } from "typeorm";
 class UsersService {
-    async Create(email: string) {
+    async create(email: string) {
         const usersRepository = getCustomRepository(UsersRepository);
         const userExists = await usersRepository.findOne({email});
         if (userExists) 

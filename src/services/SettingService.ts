@@ -8,7 +8,7 @@ interface IsettingsCreate {
 }
 
 class SettingServices {
-    async Create ({chat, username} : IsettingsCreate){
+    async create ({chat, username} : IsettingsCreate){
         const settingsRepository = getCustomRepository(SettingsRepository);
         const settings = settingsRepository.create({
             chat,
@@ -18,7 +18,7 @@ class SettingServices {
         const userAlreadyExists = await settingsRepository.findOne({
             username,
         });
-        
+
         if (userAlreadyExists) 
             throw new Error("User Already Exists.");
 
