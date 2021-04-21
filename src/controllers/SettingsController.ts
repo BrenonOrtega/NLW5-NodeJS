@@ -8,7 +8,7 @@ export class SettingsController {
         const services = new SettingServices();
         try { 
             const createdSetting = await services.Create({ chat, username });
-            return createdSetting;
+            return response.status(200).json(createdSetting);
         } catch(error){
             return response.status(400).json({ 
                 message:"Nome de usuário já está em uso."

@@ -14,12 +14,14 @@ class SettingServices {
             chat,
             username
         });
-        const userAlreadyExists = settingsRepository.findOne({
+
+        const userAlreadyExists = await settingsRepository.findOne({
             username,
-        })
+        });
+        
         if (userAlreadyExists) 
             throw new Error("User Already Exists.");
-            
+
         await settingsRepository.save(settings);
         return settings;  
     }
