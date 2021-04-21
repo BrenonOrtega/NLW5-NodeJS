@@ -1,9 +1,15 @@
 import { Router } from "express";
-import { settings } from "node:cluster";
-import { getCustomRepository } from "typeorm";
-import { SettingsRepository } from "./repositories/SettingsRepository";
+import { SettingsController } from "./controllers/SettingsController";
+import { UserController } from "./controllers/UserController";
 
 const routes = Router();
+const settingsController = new SettingsController();
+const userController = new UserController();
+
+routes.post("/settings", settingsController.Create);
+routes.post("/user", userController.Create);
+
+export { routes };
 
 /* Tipos de Parametros?
     Routes params => Parametros de rotas.
@@ -15,17 +21,3 @@ const routes = Router();
         "Key2" : "Value2"
     } 
 */
-routes.post("/settings", async (request, response) => {
-    const { chat, username } = request.body;
-
-    const settingsRepository = getCustomRepository(SettingsRepository);
-    const settings = settingsRepository.create({
-        chat,
-        username
-    });
-
-    await settingsRepository.save(settings);
-    return response.json(settings);
-})
-
-export { routes };
