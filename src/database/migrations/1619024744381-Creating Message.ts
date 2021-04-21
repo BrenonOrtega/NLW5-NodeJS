@@ -34,7 +34,7 @@ export class CreatingMessage1619024744381 implements MigrationInterface {
                 foreignKeys: [
                     {
                         name: "FKUser",
-                        referencedTableName: "userss",
+                        referencedTableName: "users",
                         referencedColumnNames: ["id"],
                         columnNames: ["user_id"],
                         onDelete: "SET NULL",
@@ -46,6 +46,7 @@ export class CreatingMessage1619024744381 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropTable("messages");
     }
 
 }
