@@ -1,1 +1,5 @@
+#node_modeules
 node_modules/
+
+#vscode settings
+.vscode/
