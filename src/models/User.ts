@@ -1,7 +1,5 @@
-import { Entity, Column, 
-    CreateDateColumn, 
-    PrimaryColumn, Timestamp 
-} from "typeorm";
+import { Entity, Column,  CreateDateColumn, 
+    PrimaryColumn, Timestamp } from "typeorm";
 import { v4 as uuid } from "uuid";
 
 @Entity("users")
